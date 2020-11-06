@@ -52,44 +52,23 @@ var beginQuizHandler = function() {
     questionTitle.append(answerButtons);
     }
 
+    // var beginQuizHandler = function() {
+    //     titleEl.remove();
+    //     rulesEl.remove();
+    //     buttonEl.remove();
     
-   
-   
-   
-   
-   
-   
-   
-   
-    // var answerButtons = document.getElementByClassName("button-div").innerHTML += "<button class='begin-quiz'>" + questions[0].answers[i] + "</button>";
-    
- 
-    
-    
-   
-    // for (let i = 0; i < questions.length; i++) {
-    //     var questionDivEl = document.createElement("div")
-    //     questionDivEl.className = "question-container";
-    //     questionDivEl.innerHTML = "<h2 class='question-name'>" + questions[i].question + "</h2>";
-    //     mainEl.appendChild(questionDivEl);
+    //     for (let i = 0; i < questions[i].question; i++) {
+    //         var questionTitle = document.createElement("div");
+    //     questionTitle.innerHTML = "<h2 class='question-name'>" + questions[0].question + "</h3>";
+    //     containerEl.appendChild(questionTitle);
+    //         for (let j = 0; j < questions[0].answers.length; j++) {
+    //             var answerButtons = document.createElement("div");
+    //                 answerButtons.className = "buttons";
+    //                 answerButtons.innerHTML += "<button class='quiz-button'>" + questions[0].answers[j] + "</button>";
+    //                 questionTitle.append(answerButtons);
+    //         } 
+    //     }
 
-
-        
-        // for (let j = 0; j < answers.length; j++) {
-        //     var answersEl = document.createElement("div");
-        //     answersEl.innerHTML = "<button class='answer-button'>" + questions[j].answers + "<button>";
-
-        // questionDivEl.appendChild(answersEl);
-        //     if (answers === correct) {
-        //         window.alert("Correct!")
-        //     } else {
-        //         window.alert("Wrong.")
-        //             // timer -= 1500        
-        //     }
-        // }
-        
-        
-    // }
 };
 
 
