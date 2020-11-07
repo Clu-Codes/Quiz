@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/style.css">
-    <script defer src="./assets/script.js"></script>
     <title>Javascript Quiz</title>
 </head>
 <body>
@@ -38,6 +37,13 @@
                 <button class="quiz-button" id="begin-quiz">Start Quiz</button>
             </div>
         </div>
+        <div class="quiz-over" style="display: none;">
+            <h2 class="quiz-over-header">All Done!</h2>
+            <p class="initial-record">Record Your Score - Enter Your Initials</p>
+            <input class="input-field"></input>
+            <button class="score-submit">Submit</button>
+        </div>
+        <script src="./assets/script.js"></script>
     </main>
     <footer class="answer-result"></footer>
 </body>

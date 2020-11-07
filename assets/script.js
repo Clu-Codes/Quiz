@@ -34,8 +34,11 @@ var titleEl = document.querySelector(".title-div");
 var rulesEl = document.querySelector(".rules-div");
 var buttonEl = document.querySelector(".button-div");
 var timerEl = document.querySelector(".timer");
+var mainEl = document.querySelector("main");
 var mainContainerEl = document.querySelector(".container");
 var answerEl = document.querySelector(".answer-result");
+var quizOverDiv = document.querySelector(".quiz-over");
+var quizOverHeaderEl = document.querySelector(".quiz-over-header");
 
 var counter = 0;
 var timeLeft = 75;
@@ -46,37 +49,30 @@ var startQuiz = function() {
     buttonEl.remove();
     questionsContainer.style.display = "block";
 
-    var timerStart = setInterval(function() {
-        timeLeft--;
-        timerEl.textContent = "Time: " + timeLeft;
-        if (timeLeft <= 0) {
-            endQuiz();
-        }
-    }, 1000);
+    for (let j = 0; j < questions[counter].answers.length; j++) {
+        var currentAnswer = document.getElementById(j + 1);
+        currentAnswer.textContent = questions[counter].answers[j];
+        var buttonIndex = j + 1;
+        currentAnswer.addEventListener("click", () => {
+            checkAnswer(j + 1);
+        });
+    }
     nextQuestion();
 };
 
 var nextQuestion = function() {
-    // while (i < questions.length) {
-        var myQuestion = questions[counter].question;
-        questionName.textContent = myQuestion;
+    var myQuestion = questions[counter].question;
+    questionName.textContent = myQuestion;
 
-        var correctAnswer = questions[counter].correct;
-
-        for (let j = 0; j < questions[counter].answers.length; j++) {
-            var currentAnswer = document.getElementById(j + 1);
-            currentAnswer.textContent = questions[counter].answers[j];
-            var buttonIndex = j + 1;
-            currentAnswer.addEventListener("click", () => {
-                checkAnswer(j + 1, correctAnswer);
-            });
-        }
-       
-    // };
-   
+    for (let i = 0; i < questions[counter].answers.length; i++) {
+        console.log(counter);
+        var currentAnswer = document.getElementById(i + 1);
+        currentAnswer.textContent = questions[counter].answers[i];
+        };
 };
 
-var checkAnswer = function(buttonIndex, correctAnswer) {
+var checkAnswer = function(buttonIndex) {
+    var correctAnswer = questions[counter].correct;
     if (correctAnswer === buttonIndex) {
         mainContainerEl.style.backgroundColor = "lightgreen"
         setTimeout(function() {
@@ -90,11 +86,45 @@ var checkAnswer = function(buttonIndex, correctAnswer) {
         }, 250);
         timeLeft -= 15;
     }
-    counter++;
-    nextQuestion();
-}
+    if (counter >= 4) {
+        endQuiz();
+    }
+    else {
+        counter++;
+        nextQuestion();
+    }
+};
 
-var endQuiz = function() {
+// var quizTimer = function() {
+    var timerStart = setInterval(function() {
+        timeLeft--;
+        timerEl.textContent = "Time: " + timeLeft;
+    }, 1000);
+// };
+
+// var scoreTabulator = function() {
+//     var theMaths = score - timeLeft;
+    
+//     return theMaths;
+// };
+
+
+var endQuiz = function() { 
+    if (timeLeft <= 0 || counter >= 4) {
+        clearInterval(timerStart);
+
+        mainContainerEl.remove();
+        quizOverDiv.style.display = "block";
+
+        var finalScore = document.createElement("p")
+        finalScore.className = "final-score";
+        finalScore.textContent = "Your Final Score Is " + timeLeft + ".";
+        quizOverHeaderEl.appendChild(finalScore);
+
+
+
+    }
+ 
 
 }
 
