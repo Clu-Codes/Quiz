@@ -30,15 +30,27 @@ var questions = [
 var startButtonEl = document.querySelector("#begin-quiz");
 var questionsContainer = document.querySelector(".questions-container");
 var questionName = document.querySelector(".question-title");
+
+// querySelector for removale of landing page elements
 var titleEl = document.querySelector(".title-div");
 var rulesEl = document.querySelector(".rules-div");
 var buttonEl = document.querySelector(".button-div");
+
+// querySelector for coutdown timer
 var timerEl = document.querySelector(".timer");
-var mainEl = document.querySelector("main");
+
+// querySelector for right-wrong color flash 
 var mainContainerEl = document.querySelector(".container");
-var answerEl = document.querySelector(".answer-result");
+
+// querySelector for endQuiz page 
 var quizOverDiv = document.querySelector(".quiz-over");
 var quizOverHeaderEl = document.querySelector(".quiz-over-header");
+
+// querySelector for HighScores landing page
+var HighScoresDivEl = document.querySelector(".highscores-div");
+
+// querySelector to log scores to LocalStorage
+var scoresButtonEl = document.querySelector(".button-submit");
 
 var counter = 0;
 var timeLeft = 75;
@@ -48,8 +60,6 @@ var startQuiz = function() {
     rulesEl.remove();
     buttonEl.remove();
     questionsContainer.style.display = "block";
-
-    // if (timeLeft > 0 && counter < questions.length
 
     timerStart = setInterval(function() {
         timeLeft--;
@@ -119,11 +129,28 @@ var endQuiz = function() {
         finalScore.className = "final-score";
         finalScore.textContent = "Your Final Score Is " + timeLeft + ".";
         quizOverHeaderEl.appendChild(finalScore);
+
+        storeScores();
 }
+
+var getInitials = function() {
+    var initials = "";
+        while (initials === "" || iniitals === null) {
+            window.prompt("Please enter your initials to log your score!")
+        }
+
+    return(initials);
+}
+
+var storeScores = function() {
+   var highScores = localStorage.setItem(initials, timeLeft);
+}
+
+
 
 // Event Listener to begin quiz when button is clicked
 startButtonEl.addEventListener("click", startQuiz);
-// startButtonEl.addEventListener("click", );
+scoresButtonEl.addEventListener("click", storeScores);
 
 // PseudoCode
 // I need to create multiple functions to handle each of the things that I am wanting to accomplish. 
@@ -131,3 +158,6 @@ startButtonEl.addEventListener("click", startQuiz);
     // I will need another function that will iterate through the quiz questions using the counter for the questions.The questions and answers I can pull from my array using a for loop
     // I will need another function to end the quiz and tabulate the score. 
     // Lastly, I will need a function that will set everything to localStorage. 
+
+    // var answerEl = document.querySelector(".answer-result"); <--- Doesn't seem to have any application. Delete after final checks.
+    // var mainEl = document.querySelector("main"); <--- Doesn't seem to have any application. Delete after final checks. 
