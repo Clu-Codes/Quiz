@@ -3,10 +3,24 @@
     padding: 0%;
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
-};
-/* header {
-    height: 35px;
-} */
+}
+a {
+        text-decoration: none;
+}
+a:hover {
+    color: lightslategray;
+}
+ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+li {
+    list-style-type: none;
+}
+button {
+    outline: none;
+}
 .header-div {
     display: flex;
     flex-wrap: flex;
@@ -45,16 +59,28 @@ main {
 .container {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    position: absolute;
+    justify-content: center;
+    /* position: absolute; */
     width: 50%;
     height: 50%;
-    border: 2px solid black;
+    border: 1px solid black;
     border-radius: 5px;
-    -moz-box-shadow: 20px, 20px, 5px, 5px #000;
-    -webkit-box-shadow: 20px, 20px, 5px, 5px #000;
-    box-shadow: 20px, 20px, 5px, 5px #000;
+    -moz-box-shadow: 20px 20px 5px 5px #000;
+    -webkit-box-shadow: 20px 20px 5px 5px #000;
+    box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, .5);
     z-index: 10;
+}
+.question-title {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.answer-choice-items {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
 }
 .quiz-title {
     display: flex;
@@ -83,6 +109,7 @@ main {
     font-size: 25px;
     padding: 10px;
     margin: 3px;
+    
 }
 .quiz-button:hover {
     background-color: lightpink;
@@ -108,7 +135,7 @@ main {
     height: 30px;
     width: 300px;
 }
-.score-submit {
+.button-submit {
     height: 30px;
     width: 120px;
     margin: 2px;

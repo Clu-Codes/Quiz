@@ -49,6 +49,17 @@ var startQuiz = function() {
     buttonEl.remove();
     questionsContainer.style.display = "block";
 
+    // if (timeLeft > 0 && counter < questions.length
+
+    timerStart = setInterval(function() {
+        timeLeft--;
+        timerEl.textContent = "Time: " + timeLeft;
+        if (timeLeft <= 0) {
+            endQuiz();
+        }
+    }, 1000);
+
+
     for (let j = 0; j < questions[counter].answers.length; j++) {
         var currentAnswer = document.getElementById(j + 1);
         currentAnswer.textContent = questions[counter].answers[j];
@@ -61,6 +72,7 @@ var startQuiz = function() {
 };
 
 var nextQuestion = function() {
+
     var myQuestion = questions[counter].question;
     questionName.textContent = myQuestion;
 
@@ -95,22 +107,9 @@ var checkAnswer = function(buttonIndex) {
     }
 };
 
-// var quizTimer = function() {
-    var timerStart = setInterval(function() {
-        timeLeft--;
-        timerEl.textContent = "Time: " + timeLeft;
-    }, 1000);
-// };
-
-// var scoreTabulator = function() {
-//     var theMaths = score - timeLeft;
-    
-//     return theMaths;
-// };
-
+var timerStart;
 
 var endQuiz = function() { 
-    if (timeLeft <= 0 || counter >= 4) {
         clearInterval(timerStart);
 
         mainContainerEl.remove();
@@ -120,16 +119,11 @@ var endQuiz = function() {
         finalScore.className = "final-score";
         finalScore.textContent = "Your Final Score Is " + timeLeft + ".";
         quizOverHeaderEl.appendChild(finalScore);
-
-
-
-    }
- 
-
 }
 
 // Event Listener to begin quiz when button is clicked
 startButtonEl.addEventListener("click", startQuiz);
+// startButtonEl.addEventListener("click", );
 
 // PseudoCode
 // I need to create multiple functions to handle each of the things that I am wanting to accomplish. 
