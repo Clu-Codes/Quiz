@@ -130,20 +130,14 @@ var endQuiz = function() {
         finalScore.textContent = "Your Final Score Is " + timeLeft + ".";
         quizOverHeaderEl.appendChild(finalScore);
 
-        storeScores();
-}
-
-var getInitials = function() {
-    var initials = "";
-        while (initials === "" || iniitals === null) {
-            window.prompt("Please enter your initials to log your score!")
-        }
-
-    return(initials);
 }
 
 var storeScores = function() {
-   var highScores = localStorage.setItem(initials, timeLeft);
+    var initials = document.getElementsByClassName("input-field").value.trim();
+        while (initials === "" || initials === null) {
+            window.prompt("Please enter your initials to log your score!")
+        }
+    localStorage.setItem(initials, timeLeft);
 }
 
 
