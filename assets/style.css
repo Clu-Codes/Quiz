@@ -65,8 +65,8 @@ main {
     height: 50%;
     border: 1px solid black;
     border-radius: 5px;
-    -moz-box-shadow: 20px 20px 5px 5px #000;
-    -webkit-box-shadow: 20px 20px 5px 5px #000;
+    -moz-box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, .5);
+    -webkit-box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, .5);
     box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, .5);
     z-index: 10;
 }
@@ -151,4 +151,30 @@ main {
 }
 .initial-record {
     font-size: 20px;
+}
+.highscores-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+.highscores-container-div {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    border: 1px solid black;
+    width: 50%;
+    height: 50%;
+    border: 1px solid black;
+    border-radius: 5px;
+    -moz-box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, .5);
+    -webkit-box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, .5);
+    box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, .5);
+}
+#scores {
+    margin-top: 10px;
+}
+.table-controls {
+    margin-top: 15px;
 }

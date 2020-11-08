@@ -25,6 +25,7 @@ var questions = [
         correct: 4
     }
 ];
+var scoresArray = [];
 
 // querySelector for Event Listener to begin quiz
 var startButtonEl = document.querySelector("#begin-quiz");
@@ -35,6 +36,7 @@ var questionName = document.querySelector(".question-title");
 var titleEl = document.querySelector(".title-div");
 var rulesEl = document.querySelector(".rules-div");
 var buttonEl = document.querySelector(".button-div");
+var initialsInput = document.querySelector("#initials")
 
 // querySelector for coutdown timer
 var timerEl = document.querySelector(".timer");
@@ -50,7 +52,10 @@ var quizOverHeaderEl = document.querySelector(".quiz-over-header");
 var HighScoresDivEl = document.querySelector(".highscores-div");
 
 // querySelector to log scores to LocalStorage
-var scoresButtonEl = document.querySelector(".button-submit");
+var scoresButtonEl = document.querySelector("#storage-submit");
+
+// querySelector to append a new table row when score is pulled
+var tableEl = document.querySelector("#row-scores");
 
 var counter = 0;
 var timeLeft = 75;
@@ -107,6 +112,7 @@ var checkAnswer = function(buttonIndex) {
             mainContainerEl.style.backgroundColor = "white";
         }, 250);
         timeLeft -= 15;
+        timerEl.textContent = "Time: " + timeLeft;
     }
     if (counter >= 4) {
         endQuiz();
@@ -132,19 +138,63 @@ var endQuiz = function() {
 
 }
 
-var storeScores = function() {
-    var initials = document.getElementsByClassName("input-field").value.trim();
-        while (initials === "" || initials === null) {
-            window.prompt("Please enter your initials to log your score!")
+
+
+// var storageScores = function() {
+    
+    
+//     console.log(scoresArray);
+// }
+
+var storeObjects = function() {
+    // event.preventDefault();
+    var initials = document.getElementById("initials").value.trim();
+    console.log({ initials });
+
+    while (initials === "" || initials === null) {
+            initials = window.prompt("Please enter your initials to log your score!")
         }
-    localStorage.setItem(initials, timeLeft);
+    var scoresObj = {
+        name: initials,
+        score: timeLeft,
+    };
+    scoresArray.push(scoresObj);
+    
+    // localStorage.setItem("highscores", JSON.stringify(scoresArray));
+    localStorage.setItem(initials,JSON.stringify({initials, timeLeft}));
+    console.log("array hjere",scoresArray);
 }
 
+// var printScores = function() {
+//     // pull the items from storage - parse them back, iterate through each to pull all the scores - 
+//     var savedScores = localStorage.getItem("highscores");
+   
+//         if (!savedScores) {
+//             scoresArray = [];
+//             return false;
+//         }
 
+//     savedScores = JSON.parse(savedScores);
+//     console.log("Savced Scores",savedScores);
+//     return savedScores;
+// };
 
+// const listScores = function(myObject) {
+    
+//     for (i = 0; i < myObject.length; i++) {
+//         var addScore = document.createElement("tr");
+//     addScore.className = "row-scores";
+//     tableEl.appendChild(addScore);
+//     }
+    
+// }
 // Event Listener to begin quiz when button is clicked
 startButtonEl.addEventListener("click", startQuiz);
-scoresButtonEl.addEventListener("click", storeScores);
+scoresButtonEl.addEventListener("click", function(){
+    storeObjects();
+    location.href= "highscores.html";
+    // listScores(printScores);
+});
 
 // PseudoCode
 // I need to create multiple functions to handle each of the things that I am wanting to accomplish. 
