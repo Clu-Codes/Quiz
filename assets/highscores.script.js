@@ -32,8 +32,8 @@ const listScores = function(myObject) {
 };
 
 var clearStorage = function() {
-    console.log("HI")
-    localStorage.clear();
+    window.localStorage.clearStorage();
+    location.reload();
 }
 
 document.getElementById("clear-storage").addEventListener("click", clearStorage);
