@@ -60,6 +60,7 @@ var tableEl = document.querySelector("#row-scores");
 var counter = 0;
 var timeLeft = 75;
 
+// Begins the quiz on the eventListener and starts the clock's countdown
 var startQuiz = function() {
     titleEl.remove();
     rulesEl.remove();
@@ -86,18 +87,20 @@ var startQuiz = function() {
     nextQuestion();
 };
 
+// Iterates through the quiz questions, counter increases by one if in checkAnswer()
 var nextQuestion = function() {
 
     var myQuestion = questions[counter].question;
     questionName.textContent = myQuestion;
 
     for (let i = 0; i < questions[counter].answers.length; i++) {
-        console.log(counter);
+        // console.log(counter);
         var currentAnswer = document.getElementById(i + 1);
         currentAnswer.textContent = questions[counter].answers[i];
         };
 };
 
+// Verifies answer correctness, penalizes if wrong. Color flash for right & wrong - green = correct, red = wrong
 var checkAnswer = function(buttonIndex) {
     var correctAnswer = questions[counter].correct;
     if (correctAnswer === buttonIndex) {
@@ -124,7 +127,7 @@ var checkAnswer = function(buttonIndex) {
 };
 
 var timerStart;
-
+// Ends Quiz, shows the results page. 
 var endQuiz = function() { 
         clearInterval(timerStart);
 
@@ -137,19 +140,10 @@ var endQuiz = function() {
         quizOverHeaderEl.appendChild(finalScore);
 
 }
-
-
-
-// var storageScores = function() {
-    
-    
-//     console.log(scoresArray);
-// }
-
+// Stores quiz data to local storage
 var storeObjects = function() {
-    // event.preventDefault();
     var initials = document.getElementById("initials").value.trim();
-    console.log({ initials });
+    // console.log({ initials });
 
     while (initials === "" || initials === null) {
             initials = window.prompt("Please enter your initials to log your score!")
@@ -160,48 +154,13 @@ var storeObjects = function() {
     };
     scoresArray.push(scoresObj);
     
-    // localStorage.setItem("highscores", JSON.stringify(scoresArray));
     localStorage.setItem(initials,JSON.stringify({initials, timeLeft}));
     console.log("array hjere",scoresArray);
 }
 
-// var printScores = function() {
-//     // pull the items from storage - parse them back, iterate through each to pull all the scores - 
-//     var savedScores = localStorage.getItem("highscores");
-   
-//         if (!savedScores) {
-//             scoresArray = [];
-//             return false;
-//         }
-
-//     savedScores = JSON.parse(savedScores);
-//     console.log("Savced Scores",savedScores);
-//     return savedScores;
-// };
-
-// const listScores = function(myObject) {
-    
-//     for (i = 0; i < myObject.length; i++) {
-//         var addScore = document.createElement("tr");
-//     addScore.className = "row-scores";
-//     tableEl.appendChild(addScore);
-//     }
-    
-// }
 // Event Listener to begin quiz when button is clicked
 startButtonEl.addEventListener("click", startQuiz);
 scoresButtonEl.addEventListener("click", function(){
     storeObjects();
     location.href= "highscores.html";
-    // listScores(printScores);
 });
-
-// PseudoCode
-// I need to create multiple functions to handle each of the things that I am wanting to accomplish. 
-    // I will need one function to begin the quiz, eliminating all of the content prior
-    // I will need another function that will iterate through the quiz questions using the counter for the questions.The questions and answers I can pull from my array using a for loop
-    // I will need another function to end the quiz and tabulate the score. 
-    // Lastly, I will need a function that will set everything to localStorage. 
-
-    // var answerEl = document.querySelector(".answer-result"); <--- Doesn't seem to have any application. Delete after final checks.
-    // var mainEl = document.querySelector("main"); <--- Doesn't seem to have any application. Delete after final checks. 
