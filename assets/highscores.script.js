@@ -32,7 +32,7 @@ const listScores = function(myObject) {
 };
 
 var clearStorage = function() {
-    window.localStorage.clearStorage();
+    localStorage.clear();
     location.reload();
 }
 
