@@ -162,5 +162,5 @@ var storeObjects = function() {
 startButtonEl.addEventListener("click", startQuiz);
 scoresButtonEl.addEventListener("click", function(){
     storeObjects();
-    location.href= "highscores.html";
+    location.href= "./assets/highscores.html";
 });
