@@ -94,7 +94,6 @@ var nextQuestion = function() {
     questionName.textContent = myQuestion;
 
     for (let i = 0; i < questions[counter].answers.length; i++) {
-        // console.log(counter);
         var currentAnswer = document.getElementById(i + 1);
         currentAnswer.textContent = questions[counter].answers[i];
         };
@@ -143,7 +142,6 @@ var endQuiz = function() {
 // Stores quiz data to local storage
 var storeObjects = function() {
     var initials = document.getElementById("initials").value.trim();
-    // console.log({ initials });
 
     while (initials === "" || initials === null) {
             initials = window.prompt("Please enter your initials to log your score!")

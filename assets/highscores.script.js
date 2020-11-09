@@ -22,7 +22,6 @@ function getLocalStorage() {
 // Adds data from localStorage into a row on the Highscores page. 
 const listScores = function(myObject) {
     for (i = 0; i < myObject.length; i++) {
-        // console.log(myObject[i])
         var addScore = document.createElement("tr");
     addScore.className = "row-scores";
     nameSection.innerHTML += `${myObject[i].name} <br>`;
@@ -34,6 +33,7 @@ const listScores = function(myObject) {
 var clearStorage = function() {
     localStorage.clear();
     location.reload();
+    return false;
 }
 
 document.getElementById("clear-storage").addEventListener("click", clearStorage);
